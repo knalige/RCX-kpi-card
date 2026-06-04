@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+  <worksheet-extension id="com.rcxsports.vizext.kpicard" extension-version="1.0.0">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>RCX reusable KPI card: big number, YoY delta, and a sparkline. Drop any measure on the Value tile.</description>
+    <author name="RCX Sports" email="admin@rcxsports.com" organization="RCX Sports" website="https://rcxsports.com"/>
+    <min-api-version>1.12</min-api-version>
+
+    <!-- IMPORTANT: replace YOURUSER / YOURREPO with your GitHub Pages path before publishing.
+         Must be HTTPS. GitHub Pages serves HTTPS automatically. -->
+    <source-location>
+      <url>https://YOURUSER.github.io/YOURREPO/index.html</url>
+    </source-location>
+
+    <icon/>
+
+    <!-- Encoding tiles that appear on the Marks card. These are how the card is reused:
+         drop ANY measure on "Value" and it renders. Comparison and Trend are optional. -->
+    <encoding id="value">
+      <display-name>Value</display-name>
+    </encoding>
+    <encoding id="comparison">
+      <display-name>Comparison (prior period)</display-name>
+    </encoding>
+    <encoding id="trend">
+      <display-name>Trend (over time)</display-name>
+    </encoding>
+  </worksheet-extension>
+
+  <resources>
+    <resource id="name">
+      <text locale="en_US">RCX KPI Card</text>
+    </resource>
+  </resources>
+</manifest>
