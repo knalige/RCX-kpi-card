@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+  <worksheet-extension id="com.rcxsports.vizext.gauge" extension-version="1.0.0">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>RCX target gauge: actual vs target (forecast) with red/yellow/green pacing zones and a needle.</description>
+    <author name="RCX Sports" email="admin@rcxsports.com" organization="RCX Sports" website="https://rcxsports.com"/>
+    <min-api-version>1.12</min-api-version>
+
+    <!-- Default assumes you host this in a /gauge subfolder of the SAME repo as the KPI card.
+         Change it if you host elsewhere. Must be HTTPS. -->
+    <source-location>
+      <url>https://https://github.com/knalige/RCX2/index.html</url>
+    </source-location>
+
+    <icon/>
+
+    <!-- Marks card tiles. Drop the actual measure on Actual and the forecast on Target. -->
+    <encoding id="actual">
+      <display-name>Actual</display-name>
+    </encoding>
+    <encoding id="target">
+      <display-name>Target (forecast)</display-name>
+    </encoding>
+  </worksheet-extension>
+
+  <resources>
+    <resource id="name">
+      <text locale="en_US">RCX Target Gauge</text>
+    </resource>
+  </resources>
+</manifest>

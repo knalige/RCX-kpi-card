@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RCX Target Gauge</title>
+  <script src="./tableau.extensions.1.latest.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="card" class="card state-empty">
+    <div id="hint" class="hint">
+      Drop your measure on <b>Actual</b> and your forecast on <b>Target</b>.
+    </div>
+
+    <div id="gauge" class="gauge" hidden>
+      <div class="g-title" id="g-title">Gauge</div>
+      <svg id="g-svg" class="g-svg" viewBox="0 0 200 132" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="g-center">
+        <div class="g-value" id="g-value">—</div>
+        <div class="g-sub" id="g-sub"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./gauge.js"></script>
+</body>
+</html>

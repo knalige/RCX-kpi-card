@@ -1,0 +1,43 @@
+/* ============================================================
+   RCX Target Gauge — styling (matches the RCX KPI card theme)
+   ============================================================ */
+:root{
+  --rcx-bg:#0d1f3c;
+  --rcx-title:#a9b7c6;
+  --rcx-sub:#8a99a8;
+  --rcx-value:#ffffff;
+  --rcx-track:#1c3157;     /* unfilled arc track */
+  --rcx-red:#e74c3c;
+  --rcx-yellow:#e8b339;
+  --rcx-green:#6abf4b;
+  --rcx-needle:#dce4ee;
+  --rcx-target:#ffffff;    /* target tick */
+  --rcx-font:"Tableau Book","Benton Sans","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;width:100%;height:100%;background:transparent;
+  font-family:var(--rcx-font);overflow:hidden;}
+.card{position:relative;width:100%;height:100%;background:var(--rcx-bg);
+  color:var(--rcx-title);padding:14px 16px;display:flex;flex-direction:column;overflow:hidden;}
+
+.hint{margin:auto;max-width:80%;text-align:center;font-size:13px;line-height:1.45;color:var(--rcx-sub);}
+.card:not(.state-empty) .hint{display:none;}
+.card.state-empty .gauge{display:none;}
+
+.gauge{position:relative;display:flex;flex-direction:column;align-items:center;
+  height:100%;animation:rise 420ms cubic-bezier(.2,.7,.2,1) both;}
+@keyframes rise{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+.g-title{font-size:13px;font-weight:700;letter-spacing:.2px;color:var(--rcx-title);
+  width:100%;text-align:center;margin-bottom:2px;}
+.g-svg{width:100%;flex:1;min-height:0;}
+
+/* Center readout overlaps the gauge */
+.g-center{position:absolute;left:0;right:0;bottom:8%;text-align:center;pointer-events:none;}
+.g-value{font-size:30px;font-weight:700;color:var(--rcx-value);
+  font-variant-numeric:tabular-nums;line-height:1;}
+.g-sub{font-size:12px;color:var(--rcx-sub);margin-top:3px;}
+.g-sub .pct{font-weight:700;}
+.g-sub .pct.red{color:var(--rcx-red);}
+.g-sub .pct.yellow{color:var(--rcx-yellow);}
+.g-sub .pct.green{color:var(--rcx-green);}
