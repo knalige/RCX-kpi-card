@@ -1,0 +1,123 @@
+/* ============================================================
+   RCX KPI Card — styling
+   Theme matches the RCX Sports navy dashboard. All colors are
+   CSS variables so you can retheme in one place (or override a
+   few of them at runtime via extension settings — see kpi-card.js).
+   ============================================================ */
+
+:root {
+  --rcx-bg:        #0d1f3c;  /* card navy background      */
+  --rcx-title:     #a9b7c6;  /* muted label / title       */
+  --rcx-subtitle:  #8a99a8;  /* dimmer subtitle (year)    */
+  --rcx-value:     #5b9bd5;  /* soft blue big number      */
+  --rcx-up:        #6abf4b;  /* positive delta (green)    */
+  --rcx-down:      #e74c3c;  /* negative delta (red)      */
+  --rcx-spark:     #5b9bd5;  /* sparkline stroke/fill     */
+  --rcx-spark-fill-opacity: 0.18;
+
+  --rcx-value-size: 44px;    /* nudged by JS to fit the card */
+  --rcx-pad: 16px;
+
+  /* Font stack: prefer the Tableau workbook fonts, then graceful fallbacks.
+     Tabular figures keep the big number from jumping as values change. */
+  --rcx-font: "Tableau Book", "Benton Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--rcx-font);
+  background: transparent;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--rcx-bg);
+  color: var(--rcx-title);
+  padding: var(--rcx-pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+/* Empty / hint state */
+.hint {
+  margin: auto;
+  max-width: 80%;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--rcx-subtitle);
+}
+.card:not(.state-empty) .hint { display: none; }
+.card.state-empty .kpi { display: none; }
+
+/* KPI content */
+.kpi {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: rise 420ms cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.kpi-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--rcx-title);
+}
+.kpi-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--rcx-subtitle);
+  min-height: 0;
+}
+.kpi-value {
+  font-size: var(--rcx-value-size);
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--rcx-value);
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.kpi-delta {
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-top: 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.kpi-delta.up   { color: var(--rcx-up); }
+.kpi-delta.down { color: var(--rcx-down); }
+.delta-pct { opacity: .95; }
+.delta-suffix { color: var(--rcx-subtitle); font-weight: 400; }
+
+/* Background sparkline pinned to the bottom of the card */
+.sparkline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 42%;
+  z-index: 1;
+  pointer-events: none;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RCX KPI2</title>
+
+  <!-- Tableau Extensions API library.
+       Copy tableau.extensions.1.latest.js from the Extensions API SDK /lib folder
+       into this same directory (see README). It MUST support viz extensions
+       (worksheet-extension), so use a recent build. -->
+  <script src="./tableau.extensions.1.latest.js"></script>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- Tableau renders the extension inside the worksheet zone; this fills it. -->
+  <div id="card" class="card state-empty">
+    <div id="hint" class="hint">
+      Drag a measure onto the <b>Value</b> tile on the Marks card.
+    </div>
+
+    <div id="kpi" class="kpi" hidden>
+      <div class="kpi-title" id="kpi-title">KPI</div>
+      <div class="kpi-subtitle" id="kpi-subtitle"></div>
+      <div class="kpi-value" id="kpi-value">—</div>
+      <div class="kpi-delta" id="kpi-delta" hidden>
+        <span class="delta-arrow" id="delta-arrow"></span>
+        <span class="delta-abs" id="delta-abs"></span>
+        <span class="delta-pct" id="delta-pct"></span>
+        <span class="delta-suffix" id="delta-suffix"></span>
+      </div>
+      <svg class="sparkline" id="sparkline" preserveAspectRatio="none" hidden></svg>
+    </div>
+  </div>
+
+  <script src="./kpi-card.js"></script>
+</body>
+</html>
