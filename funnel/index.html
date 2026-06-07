@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RCX Pipeline Funnel</title>
+  <script src="./tableau.extensions.1.latest.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="card" class="card state-empty">
+    <div id="hint" class="hint">
+      Drop your pipeline stage on <b>Stage</b> and the count on <b>Value</b>.
+      Sort the Stage field in pipeline order.
+    </div>
+    <div id="funnel" class="funnel" hidden>
+      <div class="f-title" id="f-title">Pipeline</div>
+      <div class="f-body" id="f-body"></div>
+    </div>
+  </div>
+  <script src="./funnel.js"></script>
+</body>
+</html>

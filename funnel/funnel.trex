@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://www.tableau.com/xml/extension_manifest">
+  <worksheet-extension id="com.rcxsports.vizext.funnel" extension-version="1.0.0">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>RCX pipeline funnel: ordered stages with counts, % of top, and step-to-step conversion.</description>
+    <author name="RCX Sports" email="admin@rcxsports.com" organization="RCX Sports" website="https://rcxsports.com"/>
+    <min-api-version>1.12</min-api-version>
+
+    <!-- Default assumes a /funnel subfolder of the same repo as the KPI card. Change if hosted elsewhere. -->
+    <source-location>
+      <url>https://knalige.github.io/RCX-kpi-card/funnel/index.html</url>
+    </source-location>
+
+    <icon/>
+
+    <!-- Drop the stage dimension on Stage and the count/measure on Value.
+         Sort the Stage field in pipeline order in Tableau; the funnel respects that order. -->
+    <encoding id="stage">
+      <display-name>Stage</display-name>
+    </encoding>
+    <encoding id="value">
+      <display-name>Value</display-name>
+    </encoding>
+  </worksheet-extension>
+
+  <resources>
+    <resource id="name">
+      <text locale="en_US">RCX Pipeline Funnel</text>
+    </resource>
+  </resources>
+</manifest>
